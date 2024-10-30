@@ -1,11 +1,13 @@
 package test;
 
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.lang.reflect.Executable;
+
 import org.junit.jupiter.api.Test;
 
 import logica.Parcial;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 class testParcial {
@@ -32,7 +34,6 @@ class testParcial {
     public void testDiscriminanteNegativo() {
         // Caso: a=1, b=1, c=1 -> x^2 + x + 1 = 0 -> Discriminante negativo
         Exception exception = assertThrows(ArithmeticException.class, new Executable() {
-            @Override
             public void execute() {
                 parcial.retonarRaices(1, 1, 1);
             }
@@ -44,7 +45,6 @@ class testParcial {
     public void testCoeficienteAEsCero() {
         // Caso: a=0, b=2, c=1 -> No es una ecuación de segundo grado
         Exception exception = assertThrows(IllegalArgumentException.class, new Executable() {
-            @Override
             public void execute() {
                 parcial.retonarRaices(0, 2, 1);
             }
